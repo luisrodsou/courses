@@ -1,0 +1,12 @@
+server:
+  port: 8081 # Se establece en la config. local para poder sobreescribirla al ejecutar cada instancia
+
+spring:
+  application:
+    name: courses-ms
+  config:
+    import: optional:configserver:http://localhost:8888
+
+eureka:
+  instance:
+    instance-id: courses-ms-1 # Se establece en la config. local para poder sobreescribirla al ejecutar cada instancia
