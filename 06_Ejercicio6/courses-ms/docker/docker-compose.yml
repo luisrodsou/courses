@@ -1,0 +1,31 @@
+version: "3.1"
+
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - ./courses.sql:/docker-entrypoint-initdb.d/courses.sql
+    healthcheck:
+      test: "mysqladmin ping -h localhost -u root --password=example"
+      timeout: 5s
+      retries: 10
+
+  courses-ms:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: courses-ms
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: example
+    ports:
+      - "8081:8080"
+    depends_on:
+      db:
+        condition: service_healthy

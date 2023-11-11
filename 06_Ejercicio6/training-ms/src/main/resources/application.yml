@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: training-ms
+
+app:
+  rest:
+    client:
+      courses-ms:
+        url: http://${COURSES_HOST:localhost}:${COURSES_PORT:8081}
