@@ -1,0 +1,37 @@
+#server:
+#  port: 8080
+
+spring:
+  application:
+    name: gateway-server
+  config:
+    import: configserver:http://${CONFIG_HOST:localhost}:${CONFIG_PORT:8888}?fail-fast=true&max-attempts=10
+#  cloud:
+#    gateway:
+#      default-filters:
+#        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+#      globalcors:
+#        corsConfigurations:
+#          '[/**]':
+#            allowedOrigins: "*"
+#            allowedMethods: "*"
+#            allowedHeaders: "*"
+#      routes:
+#        - id: hotel-ms
+#          uri: lb://hotel-ms
+#          predicates:
+#            - Path=/hotels/**, /hotel/**
+#        - id: flight-ms
+#          uri: lb://flight-ms
+#          predicates:
+#            - Path=/flights/**, /flight/**
+#        - id: booking-ms
+#          uri: lb://booking-ms
+#          predicates:
+#            - Path=/bookings/**, /booking/**
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka
+#    registerWithEureka: false

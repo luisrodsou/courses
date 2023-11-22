@@ -1,0 +1,52 @@
+#server:
+#  port: 8080
+#
+#logging:
+#  level:
+#    root: INFO
+#    org.springframework.web: DEBUG
+
+spring:
+  application:
+    name: flight-ms
+  config:
+    import: configserver:http://${CONFIG_HOST:localhost}:${CONFIG_PORT:8888}?fail-fast=true&max-attempts=10
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/travel_agency
+#    username: ${MYSQL_USERNAME:root}
+#    password: ${MYSQL_PASSWORD}
+#  kafka:
+#    bootstrap-servers: ${KAFKA_HOST:localhost}:${KAFKA_PORT:9092}
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#    consumer:
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#      group-id: flight-ms
+#      properties:
+#        spring:
+#          json:
+#            trusted:
+#              packages: com.travelagency.booking.model.service.schema
+#            type:
+#              mapping: >
+#                com.travelagency.booking.model.service.schema.BookingEventDTO
+#                :com.travelagency.flight.model.service.schema.BookingEventDTO
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka
+#  instance:
+#    prefer-ip-address: true
+
+#app:
+#  kafka:
+#    producer:
+#      topics:
+#        flight: flight-confirmations
+#    consumer:
+#      topics:
+#        booking: bookings

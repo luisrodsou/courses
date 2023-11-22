@@ -1,0 +1,20 @@
+#server:
+#  port: 8080
+
+spring:
+  application:
+    name: hotel-ms
+  config:
+    import: configserver:http://${CONFIG_HOST:localhost}:${CONFIG_PORT:8888}?fail-fast=true&max-attempts=10
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/travel_agency
+#    username: ${MYSQL_USERNAME:root}
+#    password: ${MYSQL_PASSWORD}
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka
+#  instance:
+#    prefer-ip-address: true
